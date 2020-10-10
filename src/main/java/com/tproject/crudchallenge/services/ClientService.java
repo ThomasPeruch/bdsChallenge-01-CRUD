@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.tproject.crudchallenge.dto.ClientDTO;
 import com.tproject.crudchallenge.entities.Client;
 import com.tproject.crudchallenge.repositories.ClientRepository;
+import com.tproject.crudchallenge.services.exceptions.ResourceNotFoundException;
 
 @Service
 public class ClientService {
@@ -19,23 +20,29 @@ public class ClientService {
 	private ClientRepository repository;
 
 	@Transactional(readOnly=true)
-	public List<ClientDTO> findAll(){
+	public List<ClientDTO> retrieveAll(){
 		List<Client> list= repository.findAll();
 		return list.stream().map(cli -> new ClientDTO(cli)).collect(Collectors.toList());			
 	}
 	
 	@Transactional(readOnly=true)
-	public ClientDTO findById(Long id) {
+	public ClientDTO retrieveById(Long id) {
 		Optional<Client> opt = repository.findById(id);
-		Client entity = opt.get();	
+		Client entity = opt.orElseThrow(() -> new ResourceNotFoundException("Entity not found"));	
 		return new ClientDTO(entity);
 		
 	}
 
-	public Client create(Client client) {
-		client = repository.save(client); 
-		return client;
+	@Transactional
+	public ClientDTO create(ClientDTO dto) {
+		Client entity = new Client();
+		entity.setName(dto.getName());
+		entity.setCpf(dto.getCpf());
+		entity.setIncome(dto.getIncome());
+		entity.setBirthDate(dto.getBirthDate());
+		entity.setChildren(dto.getChildren());
+		entity = repository.save(entity); 
+		return new ClientDTO(entity);
 	}
-	
 	
 }

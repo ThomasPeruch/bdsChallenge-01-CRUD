@@ -5,7 +5,7 @@ import java.time.Instant;
 import com.tproject.crudchallenge.entities.Client;
 
 public class ClientDTO {
-private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 	
 	private Long id;
 	private String name;

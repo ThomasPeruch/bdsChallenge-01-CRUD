@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.tproject.crudchallenge.dto.ClientDTO;
-import com.tproject.crudchallenge.entities.Client;
 import com.tproject.crudchallenge.services.ClientService;
 
 @RestController
@@ -25,22 +24,23 @@ public class ClientResource {
 	private ClientService service;
 		
 	@GetMapping
-	public ResponseEntity<List<ClientDTO>> findAll(){
-		List<ClientDTO> list = service.findAll();
+	public ResponseEntity<List<ClientDTO>> retrieveAll(){
+		List<ClientDTO> list = service.retrieveAll();
 		return ResponseEntity.ok().body(list);		
 	}
 	
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<ClientDTO> findById(@PathVariable Long id){
-		ClientDTO dto = service.findById(id); 
+		ClientDTO dto = service.retrieveById(id); 
 		return ResponseEntity.ok().body(dto);
 	}
 	
 	@PostMapping
-	public ResponseEntity<Client> create (@RequestBody Client client){
-		client = service.create(client);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(client.getId()).toUri();
-		return ResponseEntity.created(uri).body(client);
+	public ResponseEntity<ClientDTO> create(@RequestBody ClientDTO dto){
+		dto = service.create(dto);
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+				.buildAndExpand(dto.getId()).toUri();
+		return ResponseEntity.created(uri).body(dto);
 	}
 	
 
