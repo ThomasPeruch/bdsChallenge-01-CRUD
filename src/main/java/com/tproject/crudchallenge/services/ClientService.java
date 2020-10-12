@@ -1,13 +1,13 @@
 package com.tproject.crudchallenge.services;
 
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,9 +23,9 @@ public class ClientService {
 	private ClientRepository repository;
 
 	@Transactional(readOnly=true)
-	public List<ClientDTO> retrieveAll(){
-		List<Client> list= repository.findAll();
-		return list.stream().map(cli -> new ClientDTO(cli)).collect(Collectors.toList());			
+	public Page<ClientDTO> retrieveAllPaged(PageRequest pageRequest){
+		Page<Client> page= repository.findAll(pageRequest);
+		return page.map(cli -> new ClientDTO(cli));			
 	}
 	
 	@Transactional(readOnly=true)

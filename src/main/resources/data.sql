@@ -9,4 +9,8 @@ INSERT INTO tb_client (name, cpf, income, birth_Date, children) VALUES ('Jacques
 INSERT INTO tb_client (name, cpf, income, birth_Date, children) VALUES ('Tomer Kapon', '82492402130', 78000, TIMESTAMP WITH TIME ZONE '1985-07-15T09:17:42Z', 0);
 INSERT INTO tb_client (name, cpf, income, birth_Date, children) VALUES ('Lazaro Alonso', '79082256437', 91000, TIMESTAMP WITH TIME ZONE '1974-03-25T19:16:57Z', 1);
 INSERT INTO tb_client (name, cpf, income, birth_Date, children) VALUES ('Kendrick Lamar', '98836542109', 185000, TIMESTAMP WITH TIME ZONE '1987-06-17T15:23:36Z', 0);
-INSERT INTO tb_client (name, cpf, income, birth_Date, children) VALUES ('Antony Starr', '78724014796', 88000, TIMESTAMP WITH TIME ZONE '1975-10-25T19:16:57Z', 1);
+INSERT INTO tb_client (name, cpf, income, birth_Date, children) VALUES ('Benedict Cumberbatch', '76621014236', 125000, TIMESTAMP WITH TIME ZONE '1976-07-19T22:24:28Z', 2);
+INSERT INTO tb_client (name, cpf, income, birth_Date, children) VALUES ('Mads Mikkelsen', '65788211558', 75000, TIMESTAMP WITH TIME ZONE '1965-11-22T13:37:22Z', 2);
+INSERT INTO tb_client (name, cpf, income, birth_Date, children) VALUES ('Cillian Murphy', '20256748247', 120000, TIMESTAMP WITH TIME ZONE '1976-05-25T22:05:39Z', 1);
+INSERT INTO tb_client (name, cpf, income, birth_Date, children) VALUES ('Paul Anderson', '25824088725', 50000, TIMESTAMP WITH TIME ZONE '1978-02-12T16:04:58Z', 1);
+INSERT INTO tb_client (name, cpf, income, birth_Date, children) VALUES ('Joe Cole', '95275718266', 45000, TIMESTAMP WITH TIME ZONE '1988-11-28T04:22:16Z', 0);
